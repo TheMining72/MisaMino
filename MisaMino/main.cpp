@@ -5,6 +5,19 @@
 std::map<char, int> m_gemMap;
 Bot MisaBot;
 
+DLL void setup() {
+    m_gemMap[' '] = AI::GEMTYPE_NULL;
+    m_gemMap['I'] = AI::GEMTYPE_I;
+    m_gemMap['T'] = AI::GEMTYPE_T;
+    m_gemMap['L'] = AI::GEMTYPE_L;
+    m_gemMap['J'] = AI::GEMTYPE_J;
+    m_gemMap['Z'] = AI::GEMTYPE_Z;
+    m_gemMap['S'] = AI::GEMTYPE_S;
+    m_gemMap['O'] = AI::GEMTYPE_O;
+    
+    MisaBot.setup();
+}
+
 DLL void set_abort(Callback handler) {
 	Abort = handler;
 }
@@ -107,35 +120,7 @@ DLL void findpath(const char* _field, const char* _piece, int x, int y, int r, b
     }
     
     out << ((int)result.wallkick_spin);
-   
+
     std::string a = out.str();
     std::copy(a.c_str(), a.c_str() + a.length() + 1, str);
-}
-
-BOOL WINAPI DllMain(HANDLE handle, DWORD reason, LPVOID reserved) {
-    switch (reason) {
-        case DLL_PROCESS_ATTACH:
-            m_gemMap[' '] = AI::GEMTYPE_NULL;
-            m_gemMap['I'] = AI::GEMTYPE_I;
-            m_gemMap['T'] = AI::GEMTYPE_T;
-            m_gemMap['L'] = AI::GEMTYPE_L;
-            m_gemMap['J'] = AI::GEMTYPE_J;
-            m_gemMap['Z'] = AI::GEMTYPE_Z;
-            m_gemMap['S'] = AI::GEMTYPE_S;
-            m_gemMap['O'] = AI::GEMTYPE_O;
-    
-            MisaBot.setup();
-            break;
-
-        case DLL_THREAD_ATTACH:
-            break;        
-
-        case DLL_THREAD_DETACH:       
-            break;
-
-        case DLL_PROCESS_DETACH:
-            break;    
-    }
-    
-    return TRUE;
 }
