@@ -205,7 +205,7 @@ std::string Bot::outputAction() {
             out << tetris.ai_movs.movs[i] << ((i == tetris.ai_movs.movs.size() - 1)? "|" : ",");
         }
         
-        out << piece.num << "|";
+        out << piece.getLetter() << "|";
         
         processMoves();
         out << ((int)tetris.wallkick_spin) << "|" << tetris.m_pool.b2b << "|" << last_nodes << "|" << last_depth << "|" << tetris.m_attack << "|";
