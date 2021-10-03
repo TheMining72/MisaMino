@@ -18,7 +18,7 @@ public:
     
     //void startParser();
     void setup();
-    std::string outputAction(char* str, int len);
+    std::string outputAction();
     void updateStyle(AI::AI_Param param);
 	void updateHoldAllowed(bool holdAllowed);
 	void updateAllSpin(bool allSpin);

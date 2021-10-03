@@ -177,7 +177,7 @@ void Bot::processMoves() {
     tetris.clearLines();
 }
 
-std::string Bot::outputAction(char* str, int len) {
+std::string Bot::outputAction() {
     std::vector<AI::Gem> next;
     for (int j = 0; j < tetris.m_next_num; ++j)
         next.push_back(tetris.m_next[j]);
@@ -215,7 +215,7 @@ std::string Bot::outputAction(char* str, int len) {
         
         tetris.m_state = AI::Tetris::STATE_READY;
     }else{
-       out << "-1";
+        out << "-1";
     }
     
     return out.str();

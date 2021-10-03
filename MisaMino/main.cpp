@@ -60,10 +60,15 @@ DLL void update_reset() {
     MisaBot.setup();
 }
 
-DLL void action(char* str, int len) {
-    std::string a = MisaBot.outputAction(str, len);
-    std::copy(a.c_str(), a.c_str() + a.length() + 1, str);
+std::string action() {
+    return MisaBot.outputAction();
 }
+
+DLL void action(char* str) {
+    std::string solution = MisaBot.outputAction();
+    std::copy(solution.c_str(), solution.c_str() + solution.length() + 1, str);
+}
+
 DLL bool alive() {
     return MisaBot.tetris.alive();
 }
