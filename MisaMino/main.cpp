@@ -5,7 +5,7 @@
 std::map<char, int> m_gemMap;
 Bot MisaBot;
 
-DLL void setup() {
+void setup() {
     m_gemMap[' '] = AI::GEMTYPE_NULL;
     m_gemMap['I'] = AI::GEMTYPE_I;
     m_gemMap['T'] = AI::GEMTYPE_T;
@@ -18,11 +18,11 @@ DLL void setup() {
     MisaBot.setup();
 }
 
-DLL void set_abort(Callback handler) {
-	Abort = handler;
+void set_abort(int* aborting) {
+	SetAbort(aborting);
 }
 
-DLL void configure(AI::AI_Param param, bool holdAllowed, bool allSpin, bool TSDonly, int search_width, bool allow180, bool srsplus) {
+void configure(AI::AI_Param param, bool holdAllowed, bool allSpin, bool TSDonly, int search_width, bool allow180, bool srsplus) {
     MisaBot = Bot();
     MisaBot.updateStyle(param);
     MisaBot.updateHoldAllowed(holdAllowed);
@@ -34,28 +34,28 @@ DLL void configure(AI::AI_Param param, bool holdAllowed, bool allSpin, bool TSDo
     MisaBot.setup();
 };
 
-DLL void update_next(const char* queue) {
+void update_next(const char* queue) {
     MisaBot.updateQueue(queue);
 }
-DLL void update_current(const char* piece) {
+void update_current(const char* piece) {
     MisaBot.updateCurrent(piece);
 }
-DLL void update_hold(const char* piece) {
+void update_hold(const char* piece) {
     MisaBot.updateHold(piece);
 }
-DLL void update_incoming(int attack) {
+void update_incoming(int attack) {
     MisaBot.updateIncoming(attack);
 }
-DLL void update_combo(int combo) {
+void update_combo(int combo) {
     MisaBot.updateCombo(combo);
 }
-DLL void update_b2b(int b2b) {
+void update_b2b(int b2b) {
 	MisaBot.updateB2B(b2b);
 }
-DLL void update_field(const char* field) {
+void update_field(const char* field) {
     MisaBot.updateField(field);
 }
-DLL void update_reset() {
+void update_reset() {
     MisaBot.updateReset();
     MisaBot.setup();
 }
@@ -64,16 +64,11 @@ std::string action() {
     return MisaBot.outputAction();
 }
 
-DLL void action(char* str) {
-    std::string solution = MisaBot.outputAction();
-    std::copy(solution.c_str(), solution.c_str() + solution.length() + 1, str);
-}
-
-DLL bool alive() {
+bool alive() {
     return MisaBot.tetris.alive();
 }
 
-DLL void findpath(const char* _field, const char* _piece, int x, int y, int r, bool hold, char* str, int len) {
+void findpath(const char* _field, const char* _piece, int x, int y, int r, bool hold, char* str, int len) {
     std::string s = _field;
     std::vector<int> rows;
     bool solidGarbage = false;

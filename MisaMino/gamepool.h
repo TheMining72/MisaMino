@@ -6,6 +6,7 @@
 #include <iostream>
 #include "tetris_gem.h"
 #include "stuff.h"
+#include "math.h"
 #define AI_POOL_MAX_H 50
 
 namespace AI {

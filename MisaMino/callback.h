@@ -1,8 +1,7 @@
 #ifndef CALLBACK_H
 #define CALLBACK_H
 
-typedef int(__stdcall * Callback)();
-
-extern Callback Abort;
+int Abort();
+void SetAbort(int* extaborting);
 
 #endif
