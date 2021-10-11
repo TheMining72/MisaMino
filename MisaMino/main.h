@@ -6,8 +6,11 @@
 #include "stuff.h"
 
 void setup();
-
+#ifdef _WIN32
+void set_abort(Callback handler);
+#else
 void set_abort(int* aborting);
+#endif
 void configure(AI::AI_Param param, bool holdAllowed, bool allSpin, bool TSDonly, int search_width, bool allow180, bool srsplus);
 void update_next(const char* queue);
 void update_current(const char* piece);

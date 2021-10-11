@@ -18,9 +18,15 @@ void setup() {
     MisaBot.setup();
 }
 
+#ifdef _WIN32
+void set_abort(Callback handler) {
+	Abort = handler;
+}
+#else
 void set_abort(int* aborting) {
 	SetAbort(aborting);
 }
+#endif
 
 void configure(AI::AI_Param param, bool holdAllowed, bool allSpin, bool TSDonly, int search_width, bool allow180, bool srsplus) {
     MisaBot = Bot();
