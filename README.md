@@ -1,3 +1,3 @@
 # MisaMino
 
-MisaMino C++, from MisaMinoNET.
+MisaMino as a C++ static library, from MisaMinoNET.
